@@ -1,5 +1,8 @@
+using API.Middleware;
 using Application.Activities;
 using Application.Core;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -31,7 +34,13 @@ builder.Services.AddMediatR(typeof(List.Handler));
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
+//FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<Create>();
+
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -56,13 +65,13 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<DataContext>();
-    //await context.Database.MigrateAsync();
+    await context.Database.MigrateAsync();
     await Seed.SeedData(context);
 }
 catch
 {
     var logger = services.GetRequiredService<ILogger<Program>>();
-    logger.LogError("An error ocurred during migration or Seed Service");
+    logger.LogError("*** An error ocurred during migration or Seed Service! ***");
 }
 
 app.Run();
