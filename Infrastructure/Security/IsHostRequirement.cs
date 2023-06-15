@@ -28,7 +28,7 @@ namespace Infrastructure.Security
             var activityId = Guid.Parse(_httpContextAccessor.HttpContext?.Request.RouteValues
                 .SingleOrDefault(x => x.Key == "id").Value.ToString());
 
-            //Because of <Transiente> Mode this object being in memory *we should use AsNoTracking to solve that
+            //Because of <Transient> Mode this object being in memory *we should use AsNoTracking to solve that
             var attendee = _dbContext.ActivityAttendees
                 .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.AppUserId == userId && x.ActivityId == activityId)
