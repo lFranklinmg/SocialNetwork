@@ -31,6 +31,7 @@ namespace Application.Activities
                     .Include(a => a.Attendees)
                     .ThenInclude(u => u.AppUser)
                     .SingleOrDefaultAsync(x => x.Id == request.Id);
+                    //.FirstOrDefaultAsync(x => x.Id == request.Id); *Nao retorna excessao caso haja mais 1!
 
                 if (activity == null) return null;
 
@@ -39,9 +40,9 @@ namespace Application.Activities
                 if (user == null) return null;
 
                 //Busca o Host da Actvity - * in Memory pq já temos a carga no activity object
-                var hostUserName = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser?.UserName;
+                var hostUserName = activity.Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName;
 
-                var attendance = activity.Attendees.FirstOrDefault(x => x.AppUser.UserName == hostUserName);
+                var attendance = activity.Attendees.FirstOrDefault(x => x.AppUser.UserName == user.UserName);
 
                 //Modifica Status da Atividade * Somente o Host pode fazer!
                 if (attendance != null && hostUserName == user.UserName)

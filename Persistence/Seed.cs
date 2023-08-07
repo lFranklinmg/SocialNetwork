@@ -41,9 +41,9 @@ namespace Persistence
                 {
                     new Activity
                     {
-                        Title = "Past Activity 1",
+                        Title = "Travel to London",
                         Date = DateTime.UtcNow.AddMonths(-2),
-                        Description = "Activity 2 months ago",
+                        Description = "A day Travel to London",
                         Category = "drinks",
                         City = "London",
                         Venue = "Pub",
@@ -58,9 +58,9 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Past Activity 2",
+                        Title = "Visit to Louvre",
                         Date = DateTime.UtcNow.AddMonths(-1),
-                        Description = "Activity 1 month ago",
+                        Description = "A group visit off Louvre",
                         Category = "culture",
                         City = "Paris",
                         Venue = "The Louvre",
@@ -80,9 +80,9 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 1",
+                        Title = "Rock Festival",
                         Date = DateTime.UtcNow.AddMonths(1),
-                        Description = "Activity 1 month in future",
+                        Description = "London Rock Festival",
                         Category = "music",
                         City = "London",
                         Venue = "Wembly Stadium",
@@ -102,9 +102,9 @@ namespace Persistence
                     },
                     new Activity
                     {
-                        Title = "Future Activity 2",
+                        Title = "Italian Restaurant",
                         Date = DateTime.UtcNow.AddMonths(2),
-                        Description = "Activity 2 months in future",
+                        Description = "A dinner in a Italian restaurant",
                         Category = "food",
                         City = "London",
                         Venue = "Jamies Italian",

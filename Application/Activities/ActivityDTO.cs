@@ -13,6 +13,9 @@ namespace Application.Activities
         public string Venue { get; set; }
         public string HostUserName { get; set; }
         public bool IsCancelled { get; set; }
+        public bool Following { get; set; }
+        public int FollowersCount { get; set; }
+        public int FollowingCount { get; set; }
         public ICollection<AttendeeDTO> Attendees { get; set; } 
     }
 }

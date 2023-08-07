@@ -38,7 +38,8 @@ namespace Application.Photos
 
                 var currentMainPhoto = user.Photos.FirstOrDefault(x => x.IsMain);
 
-                if (currentMainPhoto != null) currentMainPhoto.IsMain = false;
+                if (currentMainPhoto != null) 
+                    currentMainPhoto.IsMain = false;
 
                 photo.IsMain = true;
 

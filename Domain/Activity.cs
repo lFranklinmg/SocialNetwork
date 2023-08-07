@@ -12,6 +12,7 @@
         public bool IsCancelled { get; set; }
         //Return Profile for Each Attendee
         public ICollection<ActivityAttendee> Attendees { get; set; } = new List<ActivityAttendee>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     }
 }
