@@ -13,10 +13,10 @@ namespace API.Controllers
     {
         //[AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetActivities()
+        public async Task<IActionResult> GetActivities([FromQuery]ActivityParams param)
         {
             //return await Mediator.Send(new List.Query());
-            return HandleResult(await Mediator.Send(new List.Query()));
+            return HandlePageResult(await Mediator.Send(new List.Query { Params = param}));
         }
 
         [HttpGet("{id}")]
